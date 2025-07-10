@@ -1,4 +1,4 @@
-# <img src="readme.assets/logo.jpg" alt="logo" height="60px" />
+# <img src="README.assets/logo.jpg" alt="logo" height="60px" />
 
    “典藏” （Trovelocal）是一个为孤狼玩家和中小型团队打造的**轻量级本地知识库系统**，可以在低成本硬件条件运行。与众不同的是，我们没有直接接入AI大模型做RAG或KAG。我们认为，平民化且效果出众的解决方案依旧还在路上。如今AI的发展日新月异，新型的高效算法和更长的上下文窗口长度在持续进步，每个月都有一些技术被突破或是被否定，还远远不到稳定落地和工程化的那天。在不远的将来，个人在消费级硬件上能部署令用户满意的AI模型时，我们会顺势接入。而不是把普通用户的电脑内存占满、把CPU和GPU烧得滚烫，占用大量运行资源使得别的工作都做不了，只为了部署一个本地的“人工智障”大模型。Trovelocal 在为那一天准备着，它像一艘诺亚方舟，承载你现有的知识。即便世界末日来临，只要带上它，就还能东山再起。
 
@@ -414,7 +414,7 @@ MCP服务器代码从 [meilisearch_mcp](https://github.com/killmonday/meilisearc
 - 在安装了docker的机器中下载本项目
 
   ```
-  git clone 
+  git clone https://github.com/fankun99/Trovelocal.git
   ```
 
 - 进入项目目录，解压mysql_meilisearch_data.tar.gz，这里面是一份干净的初始化好的mysql数据库和meilisearch索引文件
