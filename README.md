@@ -401,9 +401,9 @@ MCP服务器代码从 [meilisearch_mcp](https://github.com/killmonday/meilisearc
 
   **ubuntu登录账号** root `123`
 
-  登录后，开机任务会自动启动典藏的docker容器，大概等待30秒左右就能访问系统了（**你需要登录一次ubuntu系统**，因为我写的自启动放在/etc/profile.d里，不登录不会执行）。
+  登录后，开机任务会自动启动典藏的docker容器，大概等待30秒左右就能访问系统了。
 
-  然后使用ifconfig查看一下虚拟机的ip地址，使用nat地址或者桥接的ip地址都可以访问，直接访问 https://ip:443/即可（使用http访问80也是可以的，两个协议都配置了。http主要是用来给singlefile的浏览器扩展用，因为这个扩展如果配置的接口地址是自签名的https证书就无法使用，懒得配置域名和证书的小伙伴就用http来配合singlefile浏览器扩展就行了）。
+  然后使用ifconfig查看一下虚拟机的ip地址，使用nat地址或者桥接的ip地址都可以访问，直接访问 https://ip:443/ 即可（使用http访问80也是可以的，两个协议都配置了。http主要是用来给singlefile的浏览器扩展用，因为这个扩展如果配置的接口地址是自签名的https证书就无法使用，懒得配置域名和证书的小伙伴就用http来配合singlefile浏览器扩展就行了）。
 
   **系统web端的登录账号**是 admin `admin`。
 
