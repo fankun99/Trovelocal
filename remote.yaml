@@ -1,0 +1,89 @@
+version: '2'
+
+services:
+  singlefile:
+    container_name: singlefile
+    image: ownhp/singlefile_diancang:latest
+    volumes:
+      - ./singlefile/webserver.py:/singlefile/webserver.py
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    # entrypoint: bash
+    # command: /opt/app/run.sh
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    ports:
+      - 31111:80
+
+  db:
+    image: mysql:latest
+    container_name: mysql_diancang
+    restart: unless-stopped
+    volumes:
+    - ./mysql/my.cnf:/etc/mysql/my.cnf
+    - ./mysql/log:/var/log/mysqld
+    - ./mysql/data:/var/lib/mysql
+    - /etc/localtime:/etc/localtime:ro
+    - /etc/timezone:/etc/timezone:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: 1qazbb@666
+      MYSQL_DATABASE: trovelocal
+      MYSQL_USER: own
+      MYSQL_PASSWORD: 1qazbb@888
+    dns:
+        - 8.8.8.8
+        - 8.8.4.4
+    ports:
+      - "3306:3306"
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    container_name: diancang-run
+    image: ownhp/diancang_run:latest
+    volumes:
+    - ./start.sh:/app/start.sh
+    - ./cron:/app/cron
+    - ./data.ms:/app/data.ms
+    - ./knowledge_base/:/app/knowledge_base
+    - ./convert_html/:/app/convert_html
+    - ./convert_pdf/:/app/convert_pdf
+    - ./convert_to_mp3/:/app/convert_to_mp3
+    - ./convert_video_voice/:/app/convert_video_voice
+    - ./craw_url_to_html/:/app/craw_url_to_html
+    - ./temp_content_chunks/:/app/temp_content_chunks
+    - ./upload_attachments/:/app/upload_attachments
+    - ./uwsgi.ini:/app/uwsgi.ini
+    - ./stopword.txt:/app/stopword.txt
+    - ./cert/:/app/cert/
+    - ./configFile/nginx.conf:/etc/nginx/nginx.conf
+    - ./configFile/diancang.conf:/etc/nginx/conf.d/diancang.conf
+    - /etc/localtime:/etc/localtime:ro
+    - /etc/timezone:/etc/timezone:ro
+    - /usr/share/fonts:/usr/share/fonts
+    - ./smb.conf:/etc/samba/smb.conf
+    # - ./lib:/usr/local/lib/python3.10/dist-packages/extractous
+    depends_on:
+      db:
+        condition: service_healthy
+    dns:
+        - 8.8.8.8
+        - 8.8.4.4
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7700:7700"
+      - "445:445"
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    

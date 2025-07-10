@@ -1,0 +1,6 @@
+https://www.freebuf.com/feed
+https://poc-in-github.motikan2010.net/rss/
+https://www.4hou.com/feed
+https://paper.seebug.org/rss
+https://xlab.tencent.com/cn/atom.xml
+https://rsshub.app/nosec/threaten

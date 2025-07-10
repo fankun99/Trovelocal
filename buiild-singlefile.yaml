@@ -1,0 +1,8 @@
+FROM screenbreak/singlefile-dockerized
+WORKDIR /singlefile
+COPY . /singlefile
+
+RUN cd install && dpkg -i google-chrome-stable_current_amd64.deb && python3 -m pip install --no-index --find-links=. requests[socks]
+RUN cd /singlefile && 
+
+CMD ["python3", "webserver.py"]
