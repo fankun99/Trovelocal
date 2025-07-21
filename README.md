@@ -4,6 +4,10 @@
 
 ![image-20250707130129389](README.assets/image-20250707130129389.png)
 
+## 更新
+
+**2025.07.21**。增大了ariticle表的FileField类型字段的长度，以免有些文件包含中文导致文件名太长无法存储进数据库；增大了settings.py中的mysql常驻连接池数量为100，最大新增连接数量为1000，以免并发大时连接不够。更新后重新打包的百度云链接：https://pan.baidu.com/s/1-Dr3bndQ4mbN_Ro9jne4lw?pwd=gx4f 提取码: gx4f 。使用docker部署的，可以修改镜像ownhp/diancang_run的标签为v1.10，并重新下载项目中的mysql_meilisearch_data.tar.gz解压到本地。
+
 ## 特点
 
 - 🔎支持多类型文件内容的**全文检索**、精准匹配、模糊匹配，可达到**毫秒级响应**。
@@ -498,7 +502,7 @@ wsl --install -d Ubuntu-22.04
 
 - 在WSL的ubuntu22.04虚拟机中安装docker（略）
 
-- 下载本项目，进入项目目录，解压`tar xf mysql_meilisearch_data.tar.gz`，然后执行`docker-compose -f remote.yaml up -d`（当然，如果网络有问题，你可以从我百度云的ubuntu虚拟机中拷贝/root目录下的三个镜像文件到WSL虚拟机中导入docker镜像）
+- 下载本项目，进入项目目录，解压`tar xf mysql_meilisearch_data.tar.gz`，然后修改remote.yaml，把445端口映射的那一行注释（否则445端口会与宿主机445冲突，无法运行），最后执行`docker-compose -f remote.yaml up -d`（当然，如果网络有问题，你可以从我百度云的ubuntu虚拟机中拷贝/root目录下的三个镜像文件到WSL虚拟机中导入docker镜像）
 
 
 
