@@ -15,6 +15,7 @@ services:
       - 8.8.4.4
     ports:
       - 31111:80
+    restart: unless-stopped
 
   db:
     image: mysql:latest
@@ -82,6 +83,7 @@ services:
       - "443:443"
       - "7700:7700"
       - "445:445"
+    restart: unless-stopped
     ulimits:
       nofile:
         soft: 65535
